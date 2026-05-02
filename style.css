@@ -1,0 +1,394 @@
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal:       #1A6B6B;
+  --teal-light: #e8f4f4;
+  --teal-mid:   #2E9E9E;
+  --text:       #111827;
+  --muted:      #6B7280;
+  --border:     #E5E7EB;
+  --bg:         #FFFFFF;
+  --surface:    #F9FAFB;
+  --radius:     12px;
+  --max:        720px;
+  font-size: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Layout ────────────────────────────────────────────────── */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Navigation ────────────────────────────────────────────── */
+nav {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+nav .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.nav-brand .logo-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--teal);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.15s;
+}
+
+.nav-links a:hover { color: var(--teal); }
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.hero {
+  padding: 80px 0 64px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.hero h1 span { color: var(--teal); }
+
+.hero p {
+  font-size: 1.125rem;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+/* ─── Download Buttons ──────────────────────────────────────── */
+.download-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-store {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--text);
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: opacity 0.15s, transform 0.15s;
+  line-height: 1.3;
+}
+
+.btn-store:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.btn-store .store-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+.btn-store .store-label { font-size: 0.65rem; opacity: 0.75; display: block; }
+.btn-store .store-name  { font-size: 0.9rem; font-weight: 700; display: block; }
+
+/* ─── Features ──────────────────────────────────────────────── */
+.features {
+  padding: 64px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--teal-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.4rem;
+}
+
+.feature-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.feature-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ─── Section headings ──────────────────────────────────────── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 8px;
+}
+
+/* ─── Footer ────────────────────────────────────────────────── */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 80px;
+}
+
+footer .inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+footer p { font-size: 0.8rem; color: var(--muted); }
+
+footer .footer-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+footer .footer-links a {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+footer .footer-links a:hover { color: var(--teal); }
+
+/* ─── Legal / Support Pages ─────────────────────────────────── */
+.page-header {
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.page-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.page-header .meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.legal-body {
+  padding-bottom: 80px;
+}
+
+.legal-body h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 40px 0 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.legal-body h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 24px 0 8px;
+}
+
+.legal-body p {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.legal-body ul, .legal-body ol {
+  margin: 8px 0 16px 20px;
+}
+
+.legal-body li {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.legal-body a { color: var(--teal); text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+
+.legal-body .highlight-box {
+  background: var(--teal-light);
+  border-left: 3px solid var(--teal);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin: 16px 0;
+}
+
+.legal-body .highlight-box p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--teal);
+  font-weight: 500;
+}
+
+/* ─── Support Page ──────────────────────────────────────────── */
+.support-contact {
+  background: var(--teal);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.support-contact h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.support-contact p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+.support-contact a {
+  display: inline-block;
+  background: #fff;
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.support-contact a:hover { opacity: 0.9; }
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-item h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.faq-item a { color: var(--teal); text-decoration: none; }
+.faq-item a:hover { text-decoration: underline; }
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero { padding: 56px 0 48px; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  footer .inner { flex-direction: column; align-items: flex-start; }
+}
