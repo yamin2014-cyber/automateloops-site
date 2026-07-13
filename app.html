@@ -436,7 +436,7 @@
               email: emailInput.value,
               website: form.elements.website.value,
               platform: platform,
-              source: "landing-app",
+              source: (new URLSearchParams(location.search).get("utm_content") || "landing-app").slice(0, 50),
             }),
           });
           var data = await res.json();
