@@ -238,7 +238,7 @@
   <header>
     <div class="wrap" style="display:flex;align-items:center;">
       <span class="brand"><span class="logo-mark">PL</span> Parently Loop</span>
-      <span class="live-pill"><span class="d"></span> Live on Google Play</span>
+      <span class="live-pill"><span class="d"></span> Early access</span>
     </div>
   </header>
 
@@ -252,27 +252,20 @@
       <p class="sub">Parently Loop reads your school's emails for you and tells you what tomorrow actually needs — <b>permission slips, trip money, PE kits</b> — in one 30-second morning brief.</p>
 
       <div class="cta">
-        <!-- Android / desktop CTA -->
-        <a id="cta-android" class="btn" href="https://play.google.com/store/apps/details?id=com.automateloops.parently"
-           onclick="if(window.fbq)fbq('trackCustom','StoreClick',{store:'play'});">
-          Get it free on Google Play
-        </a>
-        <span id="cta-android-note" class="cta-note">Works with Gmail and Outlook. Read-only.</span>
-
-        <!-- iOS: single-field form directly in the hero -->
-        <form class="wl-form hidden" id="wl-form-hero">
+        <!-- Single-field waitlist form for everyone, directly in the hero -->
+        <form class="wl-form" id="wl-form-hero">
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
           <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email" />
-          <button type="submit" class="btn">Join the iPhone waitlist</button>
+          <button type="submit" class="btn">Join the waitlist</button>
           <div class="wl-msg" aria-live="polite"></div>
         </form>
-        <span id="cta-ios-note" class="cta-note hidden">iPhone is on its way — waitlist gets it first. Android is live today.</span>
+        <span id="cta-ios-note" class="cta-note">Works with Gmail and Outlook. Read-only. One email when it's your turn.</span>
         <span class="proof-inline" id="wl-count"></span>
 
         <div class="wl-success" id="wl-success-hero">
           <span class="tick">✓</span>
           <h4 class="serif">You're on the list.</h4>
-          <p>We'll email you the day the iPhone app launches. One email, no spam.</p>
+          <p>We'll email you the moment your access opens. One email, no spam.</p>
           <a class="btn-wa" target="_blank" rel="noopener"
              href="https://wa.me/?text=Found%20an%20app%20that%20turns%20all%20the%20school%20emails%20into%20one%20calm%20daily%20brief%20%E2%80%94%20made%20by%20a%20UAE%20parent.%20https%3A%2F%2Fautomateloops.com%2Fapp"
              onclick="if(window.fbq)fbq('trackCustom','ShareWhatsApp');">
@@ -341,8 +334,8 @@
         <p>Only emails from the school senders you choose, and only to read them. It cannot send, delete, or move anything. Your personal email stays personal.</p>
       </details>
       <details>
-        <summary>When is the iPhone app coming?</summary>
-        <p>It's in the works for this school year. Waitlist parents get it first, with one email on launch day.</p>
+        <summary>When do I get access?</summary>
+        <p>We're opening access to the waitlist in stages this school year — iPhone and Android. You'll get one email when it's your turn.</p>
       </details>
     </div>
   </section>
@@ -350,8 +343,8 @@
   <section id="waitlist">
     <div class="wrap">
       <div class="waitlist-card" id="waitlist-card">
-        <h3>Using an iPhone?</h3>
-        <p>Leave your email and you'll be first in line when iOS launches. One email, no spam.</p>
+        <h3>Ready for calmer mornings?</h3>
+        <p>Leave your email and you'll be first in line. One email when it's your turn, no spam.</p>
         <form class="wl-form" id="wl-form-card">
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
           <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email" />
@@ -361,7 +354,7 @@
         <div class="wl-success" id="wl-success-card">
           <span class="tick">✓</span>
           <h4 class="serif">You're on the list.</h4>
-          <p>We'll email you the day the iPhone app launches.</p>
+          <p>We'll email you the moment your access opens.</p>
           <a class="btn-wa" target="_blank" rel="noopener"
              href="https://wa.me/?text=Found%20an%20app%20that%20turns%20all%20the%20school%20emails%20into%20one%20calm%20daily%20brief%20%E2%80%94%20made%20by%20a%20UAE%20parent.%20https%3A%2F%2Fautomateloops.com%2Fapp"
              onclick="if(window.fbq)fbq('trackCustom','ShareWhatsApp');">
@@ -381,10 +374,7 @@
 
   <!-- Sticky mobile CTA -->
   <div class="sticky-bar" id="sticky-bar">
-    <a id="sticky-btn" class="btn" href="https://play.google.com/store/apps/details?id=com.automateloops.parently"
-       onclick="if(window.fbq)fbq('trackCustom','StoreClick',{store:'play',placement:'sticky'});">
-      Get it free on Google Play
-    </a>
+    <a id="sticky-btn" class="btn" href="#top">Join the waitlist</a>
   </div>
 
   <script>
@@ -396,22 +386,11 @@
 
     var heroForm = document.getElementById("wl-form-hero");
     var stickyBtn = document.getElementById("sticky-btn");
-
-    if (isIOS) {
-      document.getElementById("cta-android").classList.add("hidden");
-      document.getElementById("cta-android-note").classList.add("hidden");
-      heroForm.classList.remove("hidden");
-      document.getElementById("cta-ios-note").classList.remove("hidden");
-      document.getElementById("waitlist-card").classList.add("hidden"); // form is already in the hero
-      stickyBtn.textContent = "Join the iPhone waitlist";
-      stickyBtn.removeAttribute("onclick");
-      stickyBtn.href = "#top";
-      stickyBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        setTimeout(function () { heroForm.querySelector('input[type="email"]').focus(); }, 450);
-      });
-    }
+    stickyBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(function () { heroForm.querySelector('input[type="email"]').focus(); }, 450);
+    });
 
     // ── Sticky bar: show after the hero scrolls out, hide after signup ──
     var joined = false;
@@ -471,13 +450,13 @@
             msg.className = "wl-msg err";
             msg.textContent = data.error || "Please check the email address and try again.";
             btn.disabled = false;
-            btn.textContent = formId === "wl-form-hero" ? "Join the iPhone waitlist" : "Save my spot";
+            btn.textContent = formId === "wl-form-hero" ? "Join the waitlist" : "Save my spot";
           }
         } catch (err) {
           msg.className = "wl-msg err";
           msg.textContent = "Connection hiccup. Please try once more.";
           btn.disabled = false;
-          btn.textContent = formId === "wl-form-hero" ? "Join the iPhone waitlist" : "Save my spot";
+          btn.textContent = formId === "wl-form-hero" ? "Join the waitlist" : "Save my spot";
         }
       });
     }
