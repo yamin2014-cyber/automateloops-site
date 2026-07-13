@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parently Loop — 80 school emails a month. One calm daily brief.</title>
+  <meta name="description" content="Parently Loop reads your school emails and tells you what tomorrow needs — permission slips, trip money, PE kits — in one 30-second morning brief." />
+  <meta property="og:title" content="Parently Loop — Your school inbox, simplified." />
+  <meta property="og:description" content="One calm daily brief instead of 80 school emails a month. Built by a UAE school parent." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://automateloops.com/app" />
+  <link rel="canonical" href="https://automateloops.com/app" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel — paste your Pixel ID below before launching ads -->
+  <script>
+    var PARENTLY_PIXEL_ID = ""; // e.g. "1234567890"
+    if (PARENTLY_PIXEL_ID) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PARENTLY_PIXEL_ID);
+      fbq('track', 'PageView');
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal:       #1A6B6B;
+      --teal-deep:  #124D4D;
+      --teal-light: #e8f4f4;
+      --teal-mid:   #2E9E9E;
+      --cream:      #FAF9F6;
+      --text:       #111827;
+      --muted:      #5c6b6b;
+      --border:     #E2E8E6;
+      --amber:      #B7791F;
+      --radius:     14px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 0 22px; }
+
+    header { padding: 20px 0 0; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--teal); font-weight: 700; text-decoration: none; font-size: 17px; }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px; background: var(--teal);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
+    }
+
+    .hero { padding: 44px 0 12px; text-align: center; }
+    .eyebrow {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.8px;
+      text-transform: uppercase; color: var(--teal-mid); margin-bottom: 14px;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(34px, 9vw, 50px); font-weight: 600; line-height: 1.08;
+      letter-spacing: -0.5px; margin-bottom: 16px; text-wrap: balance;
+    }
+    h1 em { font-style: normal; color: var(--teal); }
+    .sub { font-size: 17px; color: var(--muted); max-width: 46ch; margin: 0 auto 26px; }
+
+    .cta { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--teal); color: #fff; font-size: 17px; font-weight: 700;
+      padding: 16px 34px; border-radius: 999px; text-decoration: none; border: none;
+      cursor: pointer; width: 100%; max-width: 340px;
+      box-shadow: 0 6px 18px rgba(26,107,107,0.25);
+      transition: transform 0.1s ease, background 0.15s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn:hover { background: var(--teal-deep); }
+    .cta-note { font-size: 13px; color: var(--muted); }
+
+    /* Daily Loop mock */
+    .mock { margin: 40px auto 8px; max-width: 380px; text-align: left; }
+    .mock-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 22px;
+      padding: 22px; box-shadow: 0 14px 40px rgba(18,77,77,0.10);
+    }
+    .mock-label { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--teal-mid); }
+    .mock-title { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; font-weight: 600; margin: 4px 0 14px; }
+    .mock-item { display: flex; gap: 10px; padding: 10px 0; border-top: 1px solid var(--border); font-size: 14.5px; align-items: flex-start; }
+    .mock-item .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .mock-item b { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+    .mock-meta { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+
+    .stats { display: flex; gap: 12px; justify-content: center; margin: 40px 0 8px; flex-wrap: wrap; }
+    .stat {
+      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px 22px; text-align: center; flex: 1; min-width: 150px; max-width: 240px;
+    }
+    .stat .n { font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; font-weight: 600; color: var(--teal); line-height: 1.1; }
+    .stat .l { font-size: 12.5px; color: var(--muted); }
+    .stats-note { text-align: center; font-size: 11.5px; color: var(--muted); opacity: 0.8; }
+
+    section.how { padding: 44px 0 8px; }
+    h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 30px; font-weight: 600; text-align: center; margin-bottom: 22px; }
+    .steps { display: flex; flex-direction: column; gap: 12px; }
+    .step { display: flex; gap: 14px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; align-items: flex-start; }
+    .step .num {
+      font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 600;
+      color: var(--teal); min-width: 22px; text-align: center; line-height: 1.3;
+    }
+    .step b { display: block; margin-bottom: 2px; }
+    .step p { font-size: 14.5px; color: var(--muted); }
+
+    .privacy {
+      margin: 40px 0 0; background: var(--teal-light); border-radius: var(--radius);
+      padding: 20px 22px; font-size: 14.5px; color: var(--teal-deep);
+    }
+    .privacy b { display: block; margin-bottom: 4px; }
+
+    /* Waitlist */
+    .waitlist { margin: 44px 0 0; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; text-align: center; }
+    .waitlist h3 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 27px; font-weight: 600; margin-bottom: 6px; }
+    .waitlist p { font-size: 14.5px; color: var(--muted); margin-bottom: 18px; }
+    .wl-form { display: flex; flex-direction: column; gap: 10px; max-width: 360px; margin: 0 auto; }
+    .wl-form input[type="email"] {
+      font-size: 16px; padding: 14px 18px; border-radius: 999px; border: 1.5px solid var(--border);
+      outline: none; width: 100%; background: var(--cream);
+    }
+    .wl-form input[type="email"]:focus { border-color: var(--teal-mid); }
+    .hp { position: absolute; left: -5000px; opacity: 0; }
+    .wl-msg { font-size: 14px; min-height: 20px; }
+    .wl-msg.ok { color: var(--teal); font-weight: 600; }
+    .wl-msg.err { color: #B4453F; }
+
+    footer { margin-top: 56px; padding: 24px 0 40px; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--teal); text-decoration: none; margin: 0 8px; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <a href="/" class="brand"><span class="logo-mark">PL</span> Parently Loop</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">For school parents in the UAE</span>
+      <h1>80 school emails a month.<br /><em>One calm daily brief.</em></h1>
+      <p class="sub">Parently Loop reads your school's emails for you and tells you what tomorrow actually needs — permission slips, trip money, PE kits — in one 30-second morning brief.</p>
+
+      <div class="cta">
+        <!-- Android CTA -->
+        <a id="cta-android" class="btn" href="https://play.google.com/store/apps/details?id=com.automateloops.parently"
+           onclick="if(window.fbq)fbq('trackCustom','StoreClick',{store:'play'});">
+          Get it on Google Play
+        </a>
+        <span id="cta-android-note" class="cta-note">Free to start. Works with Gmail and Outlook.</span>
+
+        <!-- iOS CTA (scrolls to waitlist) -->
+        <a id="cta-ios" class="btn hidden" href="#waitlist">Join the iPhone waitlist</a>
+        <span id="cta-ios-note" class="cta-note hidden">iPhone version is on its way. Android is live today.</span>
+      </div>
+
+      <!-- Daily Loop mock -->
+      <div class="mock">
+        <div class="mock-card">
+          <span class="mock-label">Daily Loop · Tomorrow</span>
+          <div class="mock-title serif">Good morning, Sara</div>
+          <div class="mock-item">
+            <span class="dot" style="background:#B4453F;"></span>
+            <span><b style="color:#B4453F;">Due tomorrow</b> AED 50 trip money for the Science Museum — Adam, Year 4</span>
+          </div>
+          <div class="mock-item">
+            <span class="dot" style="background:var(--amber);"></span>
+            <span><b style="color:var(--amber);">Pack tonight</b> PE kit and water bottle — Layla, Year 2</span>
+          </div>
+          <div class="mock-item">
+            <span class="dot" style="background:var(--teal-mid);"></span>
+            <span><b style="color:var(--teal-mid);">This week</b> Book fair Thursday. Parent-teacher slots open Friday.</span>
+          </div>
+        </div>
+        <div class="mock-meta">Built from 14 school emails you didn't have to read.</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="n serif">4<span style="font-size:20px;">/day</span></div><div class="l">school &amp; activity emails the average parent receives</div></div>
+        <div class="stat"><div class="n serif">6 in 10</div><div class="l">parents have missed something important buried in their inbox</div></div>
+      </div>
+      <div class="stats-note">2026 parent surveys on school communication overload</div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step"><span class="num serif">1</span><span><b>Connect your email</b><p>Gmail or Outlook. Read-only — Parently Loop can never send, delete, or touch anything.</p></span></div>
+        <div class="step"><span class="num serif">2</span><span><b>Tell us your school</b><p>We only look at emails from your school's senders. Everything else stays private and unread.</p></span></div>
+        <div class="step"><span class="num serif">3</span><span><b>Get your Daily Loop</b><p>Every morning: what's due, what to pack, what's coming — per child, in plain language.</p></span></div>
+      </div>
+
+      <div class="privacy">
+        <b>Private by design.</b>
+        Read-only access. School emails only. Nothing is shared, sold, or used for anything except your brief. Disconnect any time and your data goes with you.
+      </div>
+    </div>
+  </section>
+
+  <section id="waitlist">
+    <div class="wrap">
+      <div class="waitlist">
+        <h3>Using an iPhone?</h3>
+        <p>The iOS app is on its way. Leave your email and you'll be first in line — nothing else, no spam.</p>
+        <form class="wl-form" id="wl-form">
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
+          <input type="email" id="wl-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+          <button type="submit" class="btn" id="wl-btn">Save my spot</button>
+          <div class="wl-msg" id="wl-msg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/support">Support</a>
+      <div style="margin-top:8px;">Built by a UAE school parent. © Parently Loop</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Platform routing ──────────────────────────────────────
+    var ua = navigator.userAgent || "";
+    var isIOS = /iPhone|iPad|iPod/i.test(ua);
+    var isAndroid = /Android/i.test(ua);
+
+    if (isIOS) {
+      document.getElementById("cta-android").classList.add("hidden");
+      document.getElementById("cta-android-note").classList.add("hidden");
+      document.getElementById("cta-ios").classList.remove("hidden");
+      document.getElementById("cta-ios-note").classList.remove("hidden");
+    }
+    // Desktop and Android both show the Play Store CTA (waitlist stays below for everyone)
+
+    // ── Waitlist submit ───────────────────────────────────────
+    var API = "https://parently-loop-production.up.railway.app/api/waitlist";
+    var form = document.getElementById("wl-form");
+    var msg = document.getElementById("wl-msg");
+    var btn = document.getElementById("wl-btn");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      msg.className = "wl-msg";
+      msg.textContent = "";
+      btn.disabled = true;
+      btn.textContent = "Saving…";
+      try {
+        var res = await fetch(API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: document.getElementById("wl-email").value,
+            website: form.elements.website.value,
+            platform: isIOS ? "ios" : isAndroid ? "android" : "desktop",
+            source: "landing-app",
+          }),
+        });
+        var data = await res.json();
+        if (data.ok) {
+          form.querySelector("#wl-email").classList.add("hidden");
+          btn.classList.add("hidden");
+          msg.className = "wl-msg ok";
+          msg.textContent = "You're on the list. We'll email you the day iOS launches.";
+          if (window.fbq) fbq("track", "Lead");
+        } else {
+          msg.className = "wl-msg err";
+          msg.textContent = data.error || "Please check the email address and try again.";
+          btn.disabled = false;
+          btn.textContent = "Save my spot";
+        }
+      } catch (err) {
+        msg.className = "wl-msg err";
+        msg.textContent = "Connection hiccup. Please try once more.";
+        btn.disabled = false;
+        btn.textContent = "Save my spot";
+      }
+    });
+  </script>
+</body>
+</html>
