@@ -12,7 +12,7 @@
   <link rel="canonical" href="https://automateloops.com/app" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
 
   <!-- Meta Pixel — paste your Pixel ID below before launching ads -->
   <script>
@@ -31,117 +31,204 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --teal:       #1A6B6B;
-      --teal-deep:  #124D4D;
-      --teal-light: #e8f4f4;
-      --teal-mid:   #2E9E9E;
-      --cream:      #FAF9F6;
-      --text:       #111827;
-      --muted:      #5c6b6b;
-      --border:     #E2E8E6;
-      --amber:      #B7791F;
-      --radius:     14px;
+      --teal:      #1A6B6B;
+      --teal-deep: #0F4746;
+      --calm:      #2E9E9E;
+      --teal-wash: #E8F4F4;
+      --cream:     #FAF9F6;
+      --paper:     #FFFFFF;
+      --ink:       #16211F;
+      --muted:     #5C6B6B;
+      --border:    #E2E8E6;
+      --urgent:    #B4453F;
+      --amber:     #B7791F;
     }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
+      color: var(--ink);
       background: var(--cream);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     .serif { font-family: "Cormorant Garamond", Georgia, serif; }
-    .wrap { max-width: 640px; margin: 0 auto; padding: 0 22px; }
+    .wrap { max-width: 620px; margin: 0 auto; padding: 0 22px; }
+    .caps { font-size: 10.5px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; }
 
-    header { padding: 20px 0 0; }
-    .brand { display: flex; align-items: center; gap: 10px; color: var(--teal); font-weight: 700; text-decoration: none; font-size: 17px; }
+    /* ── Header: brand mark only, no nav (nowhere to go but in) ── */
+    header { padding: 18px 0 0; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--teal); font-weight: 700; font-size: 16px; }
     .logo-mark {
-      width: 34px; height: 34px; border-radius: 10px; background: var(--teal);
+      width: 32px; height: 32px; border-radius: 9px; background: var(--teal);
       color: #fff; display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 800; letter-spacing: 0.5px;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.5px;
     }
+    .live-pill {
+      margin-left: auto; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11.5px; font-weight: 600; color: var(--teal-deep);
+      background: var(--teal-wash); border-radius: 999px; padding: 5px 12px;
+    }
+    .live-pill .d { width: 6px; height: 6px; border-radius: 50%; background: var(--calm); }
 
-    .hero { padding: 44px 0 12px; text-align: center; }
-    .eyebrow {
-      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.8px;
-      text-transform: uppercase; color: var(--teal-mid); margin-bottom: 14px;
+    /* ── Hero ── */
+    .hero { padding: 40px 0 8px; text-align: center; }
+    .eyebrow { color: var(--calm); margin-bottom: 16px; display: inline-block; }
+    h1 { font-weight: 400; line-height: 1; letter-spacing: 0; }
+    h1 .chaos {
+      display: block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: clamp(15px, 4vw, 19px); font-weight: 600; color: var(--muted);
+      letter-spacing: 0.4px; margin-bottom: 10px;
     }
-    h1 {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: clamp(34px, 9vw, 50px); font-weight: 600; line-height: 1.08;
-      letter-spacing: -0.5px; margin-bottom: 16px; text-wrap: balance;
+    h1 .chaos s { text-decoration-color: rgba(180,69,63,0.55); text-decoration-thickness: 2px; }
+    h1 .calm-line {
+      display: block; font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(40px, 11vw, 62px); font-weight: 600; color: var(--teal-deep);
+      line-height: 1.04; letter-spacing: -0.5px; text-wrap: balance;
     }
-    h1 em { font-style: normal; color: var(--teal); }
-    .sub { font-size: 17px; color: var(--muted); max-width: 46ch; margin: 0 auto 26px; }
+    h1 .calm-line em { font-style: italic; color: var(--teal); }
+    .sub { font-size: 16.5px; color: var(--muted); max-width: 44ch; margin: 18px auto 24px; }
+    .sub b { color: var(--ink); font-weight: 600; }
 
-    .cta { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    /* ── CTA zone ── */
+    .cta { display: flex; flex-direction: column; align-items: center; gap: 9px; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       background: var(--teal); color: #fff; font-size: 17px; font-weight: 700;
-      padding: 16px 34px; border-radius: 999px; text-decoration: none; border: none;
-      cursor: pointer; width: 100%; max-width: 340px;
-      box-shadow: 0 6px 18px rgba(26,107,107,0.25);
+      padding: 16px 32px; border-radius: 999px; text-decoration: none; border: none;
+      cursor: pointer; width: 100%; max-width: 360px; min-height: 54px;
+      box-shadow: 0 6px 18px rgba(26,107,107,0.28);
       transition: transform 0.1s ease, background 0.15s ease;
     }
     .btn:active { transform: scale(0.98); }
     .btn:hover { background: var(--teal-deep); }
+    .btn:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--calm); outline-offset: 2px; }
     .cta-note { font-size: 13px; color: var(--muted); }
+    .proof-inline { font-size: 12.5px; color: var(--teal-deep); font-weight: 600; display: none; }
 
-    /* Daily Loop mock */
-    .mock { margin: 40px auto 8px; max-width: 380px; text-align: left; }
-    .mock-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 22px;
-      padding: 22px; box-shadow: 0 14px 40px rgba(18,77,77,0.10);
-    }
-    .mock-label { font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--teal-mid); }
-    .mock-title { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; font-weight: 600; margin: 4px 0 14px; }
-    .mock-item { display: flex; gap: 10px; padding: 10px 0; border-top: 1px solid var(--border); font-size: 14.5px; align-items: flex-start; }
-    .mock-item .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
-    .mock-item b { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
-    .mock-meta { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 10px; }
-
-    .stats { display: flex; gap: 12px; justify-content: center; margin: 40px 0 8px; flex-wrap: wrap; }
-    .stat {
-      background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 18px 22px; text-align: center; flex: 1; min-width: 150px; max-width: 240px;
-    }
-    .stat .n { font-family: "Cormorant Garamond", Georgia, serif; font-size: 34px; font-weight: 600; color: var(--teal); line-height: 1.1; }
-    .stat .l { font-size: 12.5px; color: var(--muted); }
-    .stats-note { text-align: center; font-size: 11.5px; color: var(--muted); opacity: 0.8; }
-
-    section.how { padding: 44px 0 8px; }
-    h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 30px; font-weight: 600; text-align: center; margin-bottom: 22px; }
-    .steps { display: flex; flex-direction: column; gap: 12px; }
-    .step { display: flex; gap: 14px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; align-items: flex-start; }
-    .step .num {
-      font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 600;
-      color: var(--teal); min-width: 22px; text-align: center; line-height: 1.3;
-    }
-    .step b { display: block; margin-bottom: 2px; }
-    .step p { font-size: 14.5px; color: var(--muted); }
-
-    .privacy {
-      margin: 40px 0 0; background: var(--teal-light); border-radius: var(--radius);
-      padding: 20px 22px; font-size: 14.5px; color: var(--teal-deep);
-    }
-    .privacy b { display: block; margin-bottom: 4px; }
-
-    /* Waitlist */
-    .waitlist { margin: 44px 0 0; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; text-align: center; }
-    .waitlist h3 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 27px; font-weight: 600; margin-bottom: 6px; }
-    .waitlist p { font-size: 14.5px; color: var(--muted); margin-bottom: 18px; }
-    .wl-form { display: flex; flex-direction: column; gap: 10px; max-width: 360px; margin: 0 auto; }
+    /* Hero waitlist form (iOS gets this instead of the store button) */
+    .wl-form { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 360px; margin: 0 auto; }
     .wl-form input[type="email"] {
-      font-size: 16px; padding: 14px 18px; border-radius: 999px; border: 1.5px solid var(--border);
-      outline: none; width: 100%; background: var(--cream);
+      font-size: 16px; padding: 15px 20px; border-radius: 999px; border: 1.5px solid var(--border);
+      outline: none; width: 100%; background: var(--paper); text-align: center; min-height: 54px;
     }
-    .wl-form input[type="email"]:focus { border-color: var(--teal-mid); }
+    .wl-form input[type="email"]:focus { border-color: var(--calm); }
     .hp { position: absolute; left: -5000px; opacity: 0; }
     .wl-msg { font-size: 14px; min-height: 20px; }
-    .wl-msg.ok { color: var(--teal); font-weight: 600; }
-    .wl-msg.err { color: #B4453F; }
+    .wl-msg.err { color: var(--urgent); }
 
-    footer { margin-top: 56px; padding: 24px 0 40px; border-top: 1px solid var(--border); text-align: center; font-size: 13px; color: var(--muted); }
-    footer a { color: var(--teal); text-decoration: none; margin: 0 8px; }
+    /* Success state — the highest-intent moment: pivot to WhatsApp share */
+    .wl-success { display: none; flex-direction: column; align-items: center; gap: 12px; max-width: 380px; margin: 0 auto; }
+    .wl-success.show { display: flex; }
+    .wl-success .tick {
+      width: 52px; height: 52px; border-radius: 50%; background: var(--teal-wash);
+      display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--teal);
+    }
+    .wl-success h4 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; font-weight: 600; }
+    .wl-success p { font-size: 14px; color: var(--muted); }
+    .btn-wa {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: #1FAF60; color: #fff; font-size: 15.5px; font-weight: 700;
+      padding: 13px 26px; border-radius: 999px; text-decoration: none; min-height: 48px;
+    }
+
+    /* ── Signature: the inbox pile behind the brief ── */
+    .stage { position: relative; max-width: 400px; margin: 46px auto 0; padding-top: 34px; }
+    .scrap {
+      position: absolute; background: #F1EFE9; border: 1px solid #E3DFD4;
+      border-radius: 8px; padding: 9px 14px; font-size: 12px; color: #8A8577;
+      box-shadow: 0 3px 10px rgba(22,33,31,0.06);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 88%;
+      z-index: 1;
+    }
+    .scrap b { color: #6E6A5E; font-weight: 600; }
+    .scrap-1 { top: 0;   left: -2%;  transform: rotate(-3.5deg); }
+    .scrap-2 { top: 26px; right: -3%; transform: rotate(2.5deg); }
+    .scrap-3 { top: 54px; left: 6%;  transform: rotate(-1.5deg); }
+    .brief {
+      position: relative; z-index: 2; margin-top: 64px;
+      background: var(--paper); border: 1px solid var(--border); border-radius: 22px;
+      padding: 22px; text-align: left;
+      box-shadow: 0 18px 44px rgba(15,71,70,0.13);
+    }
+    .brief .caps { color: var(--calm); }
+    .brief-title { font-family: "Cormorant Garamond", Georgia, serif; font-size: 27px; font-weight: 600; margin: 3px 0 12px; }
+    .brief-item { display: flex; gap: 10px; padding: 10px 0; border-top: 1px solid var(--border); font-size: 14.5px; align-items: flex-start; line-height: 1.45; }
+    .brief-item .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .brief-item .tag { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 1px; }
+    .stage-caption { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 12px; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .scrap { animation: settle 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+      .scrap-2 { animation-delay: 0.12s; }
+      .scrap-3 { animation-delay: 0.24s; }
+      .brief { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) 0.35s both; }
+      @keyframes settle {
+        from { opacity: 0; transform: translateY(-14px) rotate(0deg); }
+        to   { opacity: 1; }
+      }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(22px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    /* ── Proof band ── */
+    .stats { display: flex; gap: 12px; justify-content: center; margin: 44px 0 6px; flex-wrap: wrap; }
+    .stat {
+      background: var(--paper); border: 1px solid var(--border); border-radius: 14px;
+      padding: 16px 20px; text-align: center; flex: 1; min-width: 150px; max-width: 240px;
+    }
+    .stat .n { font-family: "Cormorant Garamond", Georgia, serif; font-size: 33px; font-weight: 600; color: var(--teal); line-height: 1.1; }
+    .stat .l { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+    .stats-note { text-align: center; font-size: 11.5px; color: var(--muted); opacity: 0.75; }
+
+    /* ── How it works ── */
+    section.how { padding: 46px 0 6px; }
+    h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 30px; font-weight: 600; text-align: center; margin-bottom: 20px; }
+    .steps { display: flex; flex-direction: column; gap: 11px; }
+    .step { display: flex; gap: 14px; background: var(--paper); border: 1px solid var(--border); border-radius: 14px; padding: 15px 18px; align-items: flex-start; }
+    .step .num { font-family: "Cormorant Garamond", Georgia, serif; font-size: 23px; font-weight: 600; color: var(--teal); min-width: 20px; text-align: center; line-height: 1.35; }
+    .step b { display: block; margin-bottom: 1px; font-size: 15.5px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    .privacy {
+      margin: 40px 0 0; background: var(--teal-wash); border-radius: 14px;
+      padding: 19px 22px; font-size: 14.5px; color: var(--teal-deep);
+    }
+    .privacy b { display: block; margin-bottom: 3px; }
+
+    /* ── FAQ ── */
+    .faq { padding: 44px 0 0; }
+    details {
+      background: var(--paper); border: 1px solid var(--border); border-radius: 14px;
+      padding: 15px 18px; margin-bottom: 10px;
+    }
+    summary { font-weight: 600; font-size: 15px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::after { content: "+"; color: var(--calm); font-size: 20px; font-weight: 400; }
+    details[open] summary::after { content: "–"; }
+    details p { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+    /* ── Secondary waitlist (Android/desktop see it here) ── */
+    .waitlist-card {
+      margin: 44px 0 0; background: var(--paper); border: 1px solid var(--border);
+      border-radius: 20px; padding: 26px 22px; text-align: center;
+    }
+    .waitlist-card h3 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+    .waitlist-card > p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+
+    footer { margin-top: 54px; padding: 22px 0 96px; border-top: 1px solid var(--border); text-align: center; font-size: 12.5px; color: var(--muted); }
+    footer a { color: var(--teal); text-decoration: none; margin: 0 7px; }
+
+    /* ── Sticky mobile CTA bar ── */
+    .sticky-bar {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      background: rgba(250,249,246,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border); padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      transform: translateY(110%); transition: transform 0.25s ease;
+    }
+    .sticky-bar.show { transform: translateY(0); }
+    .sticky-bar .btn { max-width: 480px; margin: 0 auto; display: flex; padding: 13px 24px; min-height: 50px; font-size: 16px; }
 
     .hidden { display: none !important; }
   </style>
@@ -149,53 +236,77 @@
 <body>
 
   <header>
-    <div class="wrap">
-      <a href="/" class="brand"><span class="logo-mark">PL</span> Parently Loop</a>
+    <div class="wrap" style="display:flex;align-items:center;">
+      <span class="brand"><span class="logo-mark">PL</span> Parently Loop</span>
+      <span class="live-pill"><span class="d"></span> Live on Google Play</span>
     </div>
   </header>
 
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">For school parents in the UAE</span>
-      <h1>80 school emails a month.<br /><em>One calm daily brief.</em></h1>
-      <p class="sub">Parently Loop reads your school's emails for you and tells you what tomorrow actually needs — permission slips, trip money, PE kits — in one 30-second morning brief.</p>
+      <span class="eyebrow caps">For school parents in the UAE</span>
+      <h1>
+        <span class="chaos"><s>80 school emails a month.</s></span>
+        <span class="calm-line">One <em>calm</em> daily brief.</span>
+      </h1>
+      <p class="sub">Parently Loop reads your school's emails for you and tells you what tomorrow actually needs — <b>permission slips, trip money, PE kits</b> — in one 30-second morning brief.</p>
 
       <div class="cta">
-        <!-- Android CTA -->
+        <!-- Android / desktop CTA -->
         <a id="cta-android" class="btn" href="https://play.google.com/store/apps/details?id=com.automateloops.parently"
            onclick="if(window.fbq)fbq('trackCustom','StoreClick',{store:'play'});">
-          Get it on Google Play
+          Get it free on Google Play
         </a>
-        <span id="cta-android-note" class="cta-note">Free to start. Works with Gmail and Outlook.</span>
+        <span id="cta-android-note" class="cta-note">Works with Gmail and Outlook. Read-only.</span>
 
-        <!-- iOS CTA (scrolls to waitlist) -->
-        <a id="cta-ios" class="btn hidden" href="#waitlist">Join the iPhone waitlist</a>
-        <span id="cta-ios-note" class="cta-note hidden">iPhone version is on its way. Android is live today.</span>
+        <!-- iOS: single-field form directly in the hero -->
+        <form class="wl-form hidden" id="wl-form-hero">
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
+          <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email" />
+          <button type="submit" class="btn">Join the iPhone waitlist</button>
+          <div class="wl-msg" aria-live="polite"></div>
+        </form>
+        <span id="cta-ios-note" class="cta-note hidden">iPhone is on its way — waitlist gets it first. Android is live today.</span>
+        <span class="proof-inline" id="wl-count"></span>
+
+        <div class="wl-success" id="wl-success-hero">
+          <span class="tick">✓</span>
+          <h4 class="serif">You're on the list.</h4>
+          <p>We'll email you the day the iPhone app launches. One email, no spam.</p>
+          <a class="btn-wa" target="_blank" rel="noopener"
+             href="https://wa.me/?text=Found%20an%20app%20that%20turns%20all%20the%20school%20emails%20into%20one%20calm%20daily%20brief%20%E2%80%94%20made%20by%20a%20UAE%20parent.%20https%3A%2F%2Fautomateloops.com%2Fapp"
+             onclick="if(window.fbq)fbq('trackCustom','ShareWhatsApp');">
+            Tell another parent on WhatsApp
+          </a>
+        </div>
       </div>
 
-      <!-- Daily Loop mock -->
-      <div class="mock">
-        <div class="mock-card">
-          <span class="mock-label">Daily Loop · Tomorrow</span>
-          <div class="mock-title serif">Good morning, Sara</div>
-          <div class="mock-item">
-            <span class="dot" style="background:#B4453F;"></span>
-            <span><b style="color:#B4453F;">Due tomorrow</b> AED 50 trip money for the Science Museum — Adam, Year 4</span>
+      <!-- Signature: the inbox pile settles behind the brief -->
+      <div class="stage" aria-hidden="true">
+        <div class="scrap scrap-1"><b>Re: Re: Fwd:</b> Year 4 trip — URGENT reminder + updated form (v3)</div>
+        <div class="scrap scrap-2"><b>Newsletter</b> — Week 32 (PDF attached, 14 pages)</div>
+        <div class="scrap scrap-3"><b>Gentle reminder:</b> payment portal closes Thursday…</div>
+        <div class="brief">
+          <span class="caps">Daily Loop · Tomorrow</span>
+          <div class="brief-title serif">Good morning, Sara</div>
+          <div class="brief-item">
+            <span class="dot" style="background:var(--urgent);"></span>
+            <span><span class="tag" style="color:var(--urgent);">Due tomorrow</span>AED 50 trip money for the Science Museum — Adam, Year 4</span>
           </div>
-          <div class="mock-item">
+          <div class="brief-item">
             <span class="dot" style="background:var(--amber);"></span>
-            <span><b style="color:var(--amber);">Pack tonight</b> PE kit and water bottle — Layla, Year 2</span>
+            <span><span class="tag" style="color:var(--amber);">Pack tonight</span>PE kit and water bottle — Layla, Year 2</span>
           </div>
-          <div class="mock-item">
-            <span class="dot" style="background:var(--teal-mid);"></span>
-            <span><b style="color:var(--teal-mid);">This week</b> Book fair Thursday. Parent-teacher slots open Friday.</span>
+          <div class="brief-item">
+            <span class="dot" style="background:var(--calm);"></span>
+            <span><span class="tag" style="color:var(--calm);">This week</span>Book fair Thursday. Parent-teacher slots open Friday.</span>
           </div>
         </div>
-        <div class="mock-meta">Built from 14 school emails you didn't have to read.</div>
+        <div class="stage-caption">Built from 14 school emails you didn't have to read.</div>
       </div>
 
       <div class="stats">
-        <div class="stat"><div class="n serif">4<span style="font-size:20px;">/day</span></div><div class="l">school &amp; activity emails the average parent receives</div></div>
+        <div class="stat"><div class="n serif">4<span style="font-size:19px;">/day</span></div><div class="l">school &amp; activity emails the average parent receives</div></div>
         <div class="stat"><div class="n serif">6 in 10</div><div class="l">parents have missed something important buried in their inbox</div></div>
       </div>
       <div class="stats-note">2026 parent surveys on school communication overload</div>
@@ -207,7 +318,7 @@
       <h2>How it works</h2>
       <div class="steps">
         <div class="step"><span class="num serif">1</span><span><b>Connect your email</b><p>Gmail or Outlook. Read-only — Parently Loop can never send, delete, or touch anything.</p></span></div>
-        <div class="step"><span class="num serif">2</span><span><b>Tell us your school</b><p>We only look at emails from your school's senders. Everything else stays private and unread.</p></span></div>
+        <div class="step"><span class="num serif">2</span><span><b>Tell us your school</b><p>We only read emails from your school's senders. Everything else stays private and untouched.</p></span></div>
         <div class="step"><span class="num serif">3</span><span><b>Get your Daily Loop</b><p>Every morning: what's due, what to pack, what's coming — per child, in plain language.</p></span></div>
       </div>
 
@@ -218,17 +329,45 @@
     </div>
   </section>
 
+  <section class="faq">
+    <div class="wrap">
+      <h2>Quick questions</h2>
+      <details>
+        <summary>Is it free?</summary>
+        <p>Yes — connecting your school email and the Daily Loop are free to start. Premium adds more children and smarter alerts when you want them.</p>
+      </details>
+      <details>
+        <summary>What exactly can it see?</summary>
+        <p>Only emails from the school senders you choose, and only to read them. It cannot send, delete, or move anything. Your personal email stays personal.</p>
+      </details>
+      <details>
+        <summary>When is the iPhone app coming?</summary>
+        <p>It's in the works for this school year. Waitlist parents get it first, with one email on launch day.</p>
+      </details>
+    </div>
+  </section>
+
   <section id="waitlist">
     <div class="wrap">
-      <div class="waitlist">
+      <div class="waitlist-card" id="waitlist-card">
         <h3>Using an iPhone?</h3>
-        <p>The iOS app is on its way. Leave your email and you'll be first in line — nothing else, no spam.</p>
-        <form class="wl-form" id="wl-form">
+        <p>Leave your email and you'll be first in line when iOS launches. One email, no spam.</p>
+        <form class="wl-form" id="wl-form-card">
           <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
-          <input type="email" id="wl-email" name="email" placeholder="you@example.com" required autocomplete="email" />
-          <button type="submit" class="btn" id="wl-btn">Save my spot</button>
-          <div class="wl-msg" id="wl-msg"></div>
+          <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email" />
+          <button type="submit" class="btn">Save my spot</button>
+          <div class="wl-msg" aria-live="polite"></div>
         </form>
+        <div class="wl-success" id="wl-success-card">
+          <span class="tick">✓</span>
+          <h4 class="serif">You're on the list.</h4>
+          <p>We'll email you the day the iPhone app launches.</p>
+          <a class="btn-wa" target="_blank" rel="noopener"
+             href="https://wa.me/?text=Found%20an%20app%20that%20turns%20all%20the%20school%20emails%20into%20one%20calm%20daily%20brief%20%E2%80%94%20made%20by%20a%20UAE%20parent.%20https%3A%2F%2Fautomateloops.com%2Fapp"
+             onclick="if(window.fbq)fbq('trackCustom','ShareWhatsApp');">
+            Tell another parent on WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -240,63 +379,110 @@
     </div>
   </footer>
 
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-bar" id="sticky-bar">
+    <a id="sticky-btn" class="btn" href="https://play.google.com/store/apps/details?id=com.automateloops.parently"
+       onclick="if(window.fbq)fbq('trackCustom','StoreClick',{store:'play',placement:'sticky'});">
+      Get it free on Google Play
+    </a>
+  </div>
+
   <script>
     // ── Platform routing ──────────────────────────────────────
     var ua = navigator.userAgent || "";
     var isIOS = /iPhone|iPad|iPod/i.test(ua);
     var isAndroid = /Android/i.test(ua);
+    var platform = isIOS ? "ios" : isAndroid ? "android" : "desktop";
+
+    var heroForm = document.getElementById("wl-form-hero");
+    var stickyBtn = document.getElementById("sticky-btn");
 
     if (isIOS) {
       document.getElementById("cta-android").classList.add("hidden");
       document.getElementById("cta-android-note").classList.add("hidden");
-      document.getElementById("cta-ios").classList.remove("hidden");
+      heroForm.classList.remove("hidden");
       document.getElementById("cta-ios-note").classList.remove("hidden");
+      document.getElementById("waitlist-card").classList.add("hidden"); // form is already in the hero
+      stickyBtn.textContent = "Join the iPhone waitlist";
+      stickyBtn.removeAttribute("onclick");
+      stickyBtn.href = "#top";
+      stickyBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(function () { heroForm.querySelector('input[type="email"]').focus(); }, 450);
+      });
     }
-    // Desktop and Android both show the Play Store CTA (waitlist stays below for everyone)
 
-    // ── Waitlist submit ───────────────────────────────────────
-    var API = "https://parently-loop-production.up.railway.app/api/waitlist";
-    var form = document.getElementById("wl-form");
-    var msg = document.getElementById("wl-msg");
-    var btn = document.getElementById("wl-btn");
+    // ── Sticky bar: show after the hero scrolls out, hide after signup ──
+    var joined = false;
+    var stickyBar = document.getElementById("sticky-bar");
+    window.addEventListener("scroll", function () {
+      var show = window.scrollY > 640 && !joined;
+      stickyBar.classList.toggle("show", show);
+    }, { passive: true });
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      msg.className = "wl-msg";
-      msg.textContent = "";
-      btn.disabled = true;
-      btn.textContent = "Saving…";
-      try {
-        var res = await fetch(API, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            email: document.getElementById("wl-email").value,
-            website: form.elements.website.value,
-            platform: isIOS ? "ios" : isAndroid ? "android" : "desktop",
-            source: "landing-app",
-          }),
-        });
-        var data = await res.json();
-        if (data.ok) {
-          form.querySelector("#wl-email").classList.add("hidden");
-          btn.classList.add("hidden");
-          msg.className = "wl-msg ok";
-          msg.textContent = "You're on the list. We'll email you the day iOS launches.";
-          if (window.fbq) fbq("track", "Lead");
-        } else {
-          msg.className = "wl-msg err";
-          msg.textContent = data.error || "Please check the email address and try again.";
-          btn.disabled = false;
-          btn.textContent = "Save my spot";
+    // ── Live social proof: only show a count once it's real ──
+    fetch("https://parently-loop-production.up.railway.app/api/waitlist/count")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.ok && d.count >= 25) {
+          var el = document.getElementById("wl-count");
+          el.textContent = "Join " + d.count + " parents already on the list";
+          el.style.display = "inline";
         }
-      } catch (err) {
-        msg.className = "wl-msg err";
-        msg.textContent = "Connection hiccup. Please try once more.";
-        btn.disabled = false;
-        btn.textContent = "Save my spot";
-      }
-    });
+      })
+      .catch(function () {});
+
+    // ── Waitlist submit (both forms share this) ──────────────
+    var API = "https://parently-loop-production.up.railway.app/api/waitlist";
+    function wire(formId, successId) {
+      var form = document.getElementById(formId);
+      var success = document.getElementById(successId);
+      if (!form) return;
+      var msg = form.querySelector(".wl-msg");
+      var btn = form.querySelector("button");
+      var emailInput = form.querySelector('input[type="email"]');
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        msg.className = "wl-msg";
+        msg.textContent = "";
+        btn.disabled = true;
+        btn.textContent = "Saving…";
+        try {
+          var res = await fetch(API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: emailInput.value,
+              website: form.elements.website.value,
+              platform: platform,
+              source: "landing-app",
+            }),
+          });
+          var data = await res.json();
+          if (data.ok) {
+            form.classList.add("hidden");
+            success.classList.add("show");
+            joined = true;
+            stickyBar.classList.remove("show");
+            if (window.fbq) fbq("track", "Lead");
+          } else {
+            msg.className = "wl-msg err";
+            msg.textContent = data.error || "Please check the email address and try again.";
+            btn.disabled = false;
+            btn.textContent = formId === "wl-form-hero" ? "Join the iPhone waitlist" : "Save my spot";
+          }
+        } catch (err) {
+          msg.className = "wl-msg err";
+          msg.textContent = "Connection hiccup. Please try once more.";
+          btn.disabled = false;
+          btn.textContent = formId === "wl-form-hero" ? "Join the iPhone waitlist" : "Save my spot";
+        }
+      });
+    }
+    wire("wl-form-hero", "wl-success-hero");
+    wire("wl-form-card", "wl-success-card");
   </script>
 </body>
 </html>
